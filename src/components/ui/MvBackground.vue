@@ -11,13 +11,18 @@
 <style scoped>
 .mv-bg {
   min-height: 100vh;
-  background: #06000e;
+  background: rgba(6, 0, 14, 0.7);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px 24px;
   position: relative;
   overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .bg-grid {
