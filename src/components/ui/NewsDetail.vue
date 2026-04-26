@@ -1,5 +1,17 @@
 <template>
   <div class="detail-page">
+    <!-- VideoPage fullscreen -->
+    <Teleport to="body">
+      <transition name="vp-fade">
+        <VideoPage
+          v-if="showVideo"
+          :news-title="news.title"
+          :videos="news.videos || []"
+          @close="showVideo = false"
+        />
+      </transition>
+    </Teleport>
+
     <!-- Back -->
     <button class="back-btn" @click="$emit('back')"><span>←</span> Kembali ke Berita</button>
 
@@ -14,12 +26,11 @@
           <MvChip variant="accent" class="hero-badge">{{ news.category }}</MvChip>
         </div>
 
-        <!-- Article body wrapped in MvCard -->
+        <!-- Article body -->
         <MvCard width="100%" height="auto" class="article-card">
           <div class="article-inner">
             <div class="scan-line"></div>
 
-            <!-- Meta -->
             <div class="article-meta">
               <span class="meta-date">{{ news.date }}</span>
               <span class="meta-sep">·</span>
@@ -28,12 +39,9 @@
               <MvChip>{{ news.readTime }}</MvChip>
             </div>
 
-            <!-- Title -->
             <h1 class="article-title">{{ news.title }}</h1>
-
             <MvDivider />
 
-            <!-- Dynamic blocks -->
             <template v-for="(block, i) in news.blocks" :key="i">
               <ContentText v-if="block.type === 'h1'" tag="h1">{{ block.value }}</ContentText>
               <ContentText v-else-if="block.type === 'h2'" tag="h2">{{ block.value }}</ContentText>
@@ -70,12 +78,18 @@
       </article>
 
       <!-- Sidebar -->
-      <NewsSidebar :items="related" @select="$emit('navigate', $event)" />
+      <NewsSidebar
+        :items="related"
+        :videos="news.videos || []"
+        @select="$emit('navigate', $event)"
+        @openVideo="showVideo = true"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import MvCard from '../../components/ui/MvCard.vue'
 import MvChip from '../../components/ui/MvChip.vue'
 import MvDivider from '../../components/ui/MvDivider.vue'
@@ -86,6 +100,7 @@ import ContentCode from '../../components/content/ContentCode.vue'
 import ContentQuote from '../../components/content/ContentQuote.vue'
 import ContentList from '../../components/content/ContentList.vue'
 import NewsSidebar from './NewsSidebar.vue'
+import VideoPage from '@/presentation/pages/students/VideoPage.vue'
 
 defineProps({
   news: { type: Object, required: true },
@@ -93,6 +108,8 @@ defineProps({
 })
 
 defineEmits(['back', 'navigate'])
+
+const showVideo = ref(false)
 </script>
 
 <style scoped>
@@ -126,7 +143,6 @@ defineEmits(['back', 'navigate'])
   transform: translateX(-3px);
 }
 
-/* Layout: article + sidebar */
 .detail-layout {
   display: flex;
   gap: 28px;
@@ -138,7 +154,6 @@ defineEmits(['back', 'navigate'])
   min-width: 0;
 }
 
-/* Hero */
 .detail-hero {
   position: relative;
   height: 320px;
@@ -168,7 +183,6 @@ defineEmits(['back', 'navigate'])
   left: 16px;
 }
 
-/* Article card */
 .article-card {
   border-radius: 0 0 16px 16px !important;
   border-top: none !important;
@@ -221,7 +235,6 @@ defineEmits(['back', 'navigate'])
   font-size: 12px;
   color: rgba(168, 85, 247, 0.6);
 }
-
 .meta-sep {
   color: rgba(168, 85, 247, 0.3);
 }
@@ -236,7 +249,16 @@ defineEmits(['back', 'navigate'])
   text-shadow: 0 0 30px rgba(168, 85, 247, 0.25);
 }
 
-/* Sidebar hidden on mobile */
+/* VideoPage transition */
+.vp-fade-enter-active,
+.vp-fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+.vp-fade-enter-from,
+.vp-fade-leave-to {
+  opacity: 0;
+}
+
 @media (max-width: 900px) {
   .detail-layout {
     flex-direction: column;
@@ -252,42 +274,6 @@ defineEmits(['back', 'navigate'])
   }
   .article-inner {
     padding: 20px 18px 28px;
-  }
-
-  /* Layout: article + sidebar */
-  .detail-layout {
-    display: flex;
-    gap: 28px;
-    align-items: flex-start;
-    flex-direction: row; /* Default PC */
-  }
-
-  .detail-article {
-    flex: 1;
-    min-width: 0; /* Mencegah konten overflow break layout */
-  }
-
-  /* Sidebar khusus PC */
-  .detail-layout > :deep(aside),
-  .detail-layout > .news-sidebar {
-    width: 320px; /* Tentukan lebar sidebar di PC */
-    flex-shrink: 0;
-  }
-
-  .detail-layout {
-    flex-direction: column; /* Ubah ke tumpukan vertikal */
-    gap: 40px; /* Beri jarak lebih besar antara berita dan sidebar di bawah */
-  }
-
-  .detail-article {
-    width: 100%; /* Pastikan artikel selebar layar */
-  }
-
-  /* Memastikan Sidebar mengambil lebar penuh saat di bawah */
-  .detail-layout > :deep(aside),
-  .detail-layout > .news-sidebar {
-    width: 100% !important;
-    flex: none;
   }
 }
 </style>

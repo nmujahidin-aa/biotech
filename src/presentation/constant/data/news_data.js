@@ -8,6 +8,7 @@ export const newsList = [
   {
     id: 1,
     title: 'Korelasi Kasus Mulsa Plastik dengan Bioteknologi',
+    videos: ['1AbbxX3gO7Fc5yQkka1XlAlF82REOrbrh', '1WtEeU9d4DefDDFTiJ8GWmrfbWNsHdxEg'],
     category: 'Bioteknologi',
     tag: 'LINGKUNGAN',
     author: 'Teacher',
@@ -131,6 +132,7 @@ export const newsList = [
   {
     id: 2,
     title: 'Korelasi Kasus Sungai Kotor di Kedungkandang dengan Bioteknologi',
+    videos: ['1qUWWBukWLGS_lNVB9AUX6mrO8oD085yz'],
     category: 'Bioteknologi',
     tag: 'LINGKUNGAN',
     author: 'Teacher',
@@ -208,6 +210,7 @@ export const newsList = [
   {
     id: 3,
     title: 'Korelasi Kasus Pengelolaan Sampah TPA Supit Urang dengan Bioteknologi',
+    videos: ['1q4w6pD_8kAX4XqJ4Qc97fPGxuXN0ZEGj'],
     category: 'Bioteknologi',
     tag: 'TEKNOLOGI',
     author: 'Teacher',
@@ -289,6 +292,7 @@ export const newsList = [
   {
     id: 4,
     title: 'Korelasi Kasus Limbah Kotoran Sapi Perah dengan Bioteknologi',
+    videos: ['1oRKyCK_0Ejgkyw3ZZce3d4E7uX0G-mzG', '1Kb3P0zM_ELq0ynUnk6VW1azUwE-m4WqR'],
     category: 'Bioteknologi',
     tag: 'LINGKUNGAN',
     author: 'Teacher',
@@ -365,6 +369,7 @@ export const newsList = [
   {
     id: 5,
     title: 'Korelasi Kasus Sampah Organik di Pasar Gadang dengan Bioteknologi',
+    videos: ['14pSe6gpfpQG1TEazTC5TR-sURfZWPY78'],
     category: 'Bioteknologi',
     tag: 'LINGKUNGAN',
     author: 'Teacher',
