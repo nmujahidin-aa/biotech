@@ -14,7 +14,7 @@ export const newsList = [
     author: 'Teacher',
     date: '2026',
     readTime: '5 min read',
-    image: image_news_1,
+    image: image_news_4,
     source: 'https://www.malangtimes.com/baca/10062/20160217/081900/privacy',
     blocks: [
       { type: 'h2', value: '1. Mengapa Fenomena Ini Berhubungan dengan Bioteknologi?' },
@@ -138,7 +138,7 @@ export const newsList = [
     author: 'Teacher',
     date: '2026',
     readTime: '6 min read',
-    image: image_news_2,
+    image: image_news_5,
     source: 'https://brantasae.ub.ac.id/projects/1513/detail',
     blocks: [
       { type: 'h2', value: '1. Mengapa Fenomena Ini Berhubungan dengan Bioteknologi?' },
@@ -298,7 +298,7 @@ export const newsList = [
     author: 'Teacher',
     date: '2026',
     readTime: '5 min read',
-    image: image_news_4,
+    image: image_news_1,
     source:
       'https://radarbatu.jawapos.com/berita-terbaru/2507130003/peternak-di-desa-oro-oro-ombobuang-limbah-kotoran-sapi-di-sungai',
     blocks: [
@@ -375,7 +375,7 @@ export const newsList = [
     author: 'Teacher',
     date: '2026',
     readTime: '5 min read',
-    image: image_news_5,
+    image: image_news_2,
     source:
       'https://ketik.com/berita/timbunan-sampah-pasar-gadang-masih-jadi-masalah-dlh-kota-malang',
     blocks: [
