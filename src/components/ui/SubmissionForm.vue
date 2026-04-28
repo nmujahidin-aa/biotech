@@ -198,19 +198,20 @@ import { ref, computed, watch } from 'vue'
 import { initializeApp, getApps } from 'firebase/app'
 import { getFirestore, collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import MvDivider from '../../components/ui/MvDivider.vue'
+import { ENV } from '@/config/env'
 
 const FIREBASE_CONFIG = {
-  apiKey: 'AIzaSyDD1yZstmkVwm2cGs_k1mnL6pH21SQcRFE',
-  authDomain: 'biotech-malang.firebaseapp.com',
-  projectId: 'biotech-malang',
-  storageBucket: 'biotech-malang.firebasestorage.app',
-  messagingSenderId: '407516385593',
-  appId: '1:407516385593:web:45e5f9f033b1d7c8d4d8e8',
-  measurementId: 'G-L2YZZH2R74',
+  apiKey: ENV.firebase.apiKey,
+  authDomain: ENV.firebase.authDomain,
+  projectId: ENV.firebase.projectId,
+  storageBucket: ENV.firebase.storageBucket,
+  messagingSenderId: ENV.firebase.messagingSenderId,
+  appId: ENV.firebase.appId,
+  measurementId: ENV.firebase.measurementId,
 }
 
-const CLOUDINARY_CLOUD_NAME = 'dqmvbfja3'
-const CLOUDINARY_UPLOAD_PRESET = 'biotech'
+const CLOUDINARY_CLOUD_NAME = ENV.cloudinary.cloudName
+const CLOUDINARY_UPLOAD_PRESET = ENV.cloudinary.uploadPreset
 
 const firebaseApp = getApps().length ? getApps()[0] : initializeApp(FIREBASE_CONFIG)
 const db = getFirestore(firebaseApp)
