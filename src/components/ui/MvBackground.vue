@@ -10,7 +10,7 @@
 
 <style scoped>
 .mv-bg {
-  min-height: 100vh;
+  height: 100vh;
   background: rgba(6, 0, 14, 0.7);
 
   backdrop-filter: blur(10px);
