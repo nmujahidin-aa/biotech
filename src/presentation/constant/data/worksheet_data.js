@@ -7,9 +7,9 @@ export const worksheets = [
     duration: '30 menit',
     difficulty: 'Mudah',
     lwId: 8401474,
-    lwLang: '3rcu',
+    code: '3rcu',
     lwUserId: 11532,
-    lwParams:
+    embedUrl:
       'https://www.liveworksheets.com/embed/c?a=s&t=MwyPzSWYt3&sr=n&l=3r&i=oczucsc&r=cu&f=dzdxzcdx&ms=uz&cd=p-ui-g---z0l0sjkgxkpkkxngnmgknmxg&mw=hs',
   },
   {
@@ -20,9 +20,9 @@ export const worksheets = [
     duration: '35 menit',
     difficulty: 'Sedang',
     lwId: 0, // Ganti dengan ID worksheet kedua
-    lwLang: '', // Ganti dengan lang code
+    code: '', // Ganti dengan lang code
     lwUserId: 0, // Ganti dengan user ID
-    lwParams: '', // Ganti dengan params URL
+    embedUrl: '', // Ganti dengan params URL
   },
   {
     id: 3,
@@ -32,9 +32,9 @@ export const worksheets = [
     duration: '25 menit',
     difficulty: 'Mudah',
     lwId: 0,
-    lwLang: '',
+    code: '',
     lwUserId: 0,
-    lwParams: '',
+    embedUrl: '',
   },
   {
     id: 4,
@@ -44,9 +44,9 @@ export const worksheets = [
     duration: '40 menit',
     difficulty: 'Sulit',
     lwId: 0,
-    lwLang: '',
+    code: '',
     lwUserId: 0,
-    lwParams: '',
+    embedUrl: '',
   },
   {
     id: 5,
@@ -56,9 +56,9 @@ export const worksheets = [
     duration: '45 menit',
     difficulty: 'Sulit',
     lwId: 0,
-    lwLang: '',
+    code: '',
     lwUserId: 0,
-    lwParams: '',
+    embedUrl: '',
   },
 ]
 

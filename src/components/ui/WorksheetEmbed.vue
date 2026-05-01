@@ -48,7 +48,6 @@
           </div>
         </div>
 
-        <!-- iFrame -->
         <div class="embed-body">
           <div class="iframe-wrap">
             <div class="iframe-border">
@@ -63,6 +62,10 @@
             </div>
           </div>
         </div>
+
+        <div v-if="!loading && !props.worksheet.embedUrl" class="error-message">
+          <p>Worksheet tidak dapat dimuat. Silakan periksa kembali parameter embed.</p>
+        </div>
       </div>
     </transition>
   </Teleport>
@@ -76,6 +79,9 @@ const props = defineProps({
   show: { type: Boolean, required: true },
   worksheet: { type: Object, default: () => ({}) },
 })
+
+console.log('Props yang diterima:', props)
+
 defineEmits(['close'])
 
 const loading = ref(true)
@@ -84,31 +90,42 @@ const diff = computed(
   () => difficultyConfig[props.worksheet?.difficulty] ?? difficultyConfig['Mudah'],
 )
 
-// 🔥 function load worksheet
 function loadWorksheet() {
-  if (!props.worksheet?.embedUrl) return
+  if (!props.worksheet?.embedUrl || !props.worksheet?.lwId || !props.worksheet?.code) {
+    console.error('Parameter embed tidak lengkap!')
+    // apa parameter yang dibutuhkan: embedUrl, lwId, code
+    console.log('Parameter yang diperlukan:', {
+      embedUrl: props.worksheet?.embedUrl,
+      lwId: props.worksheet?.lwId,
+      code: props.worksheet?.code,
+    })
+    return
+  }
 
-  // bersihkan container dulu (biar tidak numpuk)
   const container = document.getElementById('liveworksheet-container')
   if (container) container.innerHTML = ''
 
   const run = () => {
-    window.loadliveworksheetEmbed(
-      props.worksheet.lwId || 8401474,
-      props.worksheet.code || '3rcu',
-      props.worksheet.width || 11532,
-      'www',
-      'new',
-      props.worksheet.embedUrl,
-    )
-    loading.value = false
+    if (typeof window.loadliveworksheetEmbed === 'function') {
+      window.loadliveworksheetEmbed(
+        props.worksheet.lwId,
+        props.worksheet.code,
+        props.worksheet.width || 11532,
+        'www',
+        'new',
+        props.worksheet.embedUrl,
+      )
+      loading.value = false
+    } else {
+      console.error('Fungsi loadliveworksheetEmbed tidak ditemukan!')
+    }
   }
 
-  const existing = document.querySelector(
+  const existingScript = document.querySelector(
     'script[src="https://www.liveworksheets.com/embed/embed-link.js"]',
   )
 
-  if (!existing) {
+  if (!existingScript) {
     const script = document.createElement('script')
     script.src = 'https://www.liveworksheets.com/embed/embed-link.js'
     script.onload = run
@@ -120,21 +137,26 @@ function loadWorksheet() {
 
 onMounted(() => {
   if (props.show) {
-    nextTick(() => loadWorksheet())
+    nextTick(() => {
+      console.log('Modal dirender, memuat worksheet...')
+      loadWorksheet()
+    })
   }
 })
 
-// 🔄 saat modal dibuka
 watch(
   () => props.show,
   async (val) => {
     if (val) {
       loading.value = true
       await nextTick()
+      console.log('Modal dibuka, memuat worksheet...')
       loadWorksheet()
     }
   },
 )
+
+console.log('Parameter worksheet:', props.worksheet)
 </script>
 
 <style scoped>
@@ -161,7 +183,6 @@ watch(
   pointer-events: none;
 }
 
-/* Header */
 .embed-header {
   display: flex;
   align-items: center;
@@ -248,7 +269,6 @@ watch(
   border: 1px solid;
 }
 
-/* Body */
 .embed-body {
   flex: 1;
   padding: 20px 24px;
