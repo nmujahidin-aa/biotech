@@ -1,5 +1,6 @@
 import './assets/main.css'
 import 'vue3-easy-data-table/dist/style.css'
+import './assets/styles/fix-easy-table.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

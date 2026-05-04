@@ -1,0 +1,24 @@
+/* Fix for vue3-easy-data-table CSS variables */
+:root {
+  --easy-table-border: 1px solid rgba(139, 92, 246, 0.2);
+  --easy-table-row-border: 1px solid rgba(139, 92, 246, 0.1);
+  --easy-table-header-font-color: #c084fc;
+  --easy-table-header-background-color: rgba(26, 11, 46, 0.8);
+  --easy-table-header-item-padding: 10px 15px;
+  --easy-table-body-row-font-color: #e2e8f0;
+  --easy-table-body-row-background-color: rgba(15, 7, 23, 0.6);
+  --easy-table-body-row-height: 50px;
+  --easy-table-body-row-font-size: 14px;
+  --easy-table-body-row-hover-background-color: rgba(139, 92, 246, 0.1);
+  --easy-table-footer-background-color: rgba(26, 11, 46, 0.8);
+  --easy-table-footer-font-color: #c084fc;
+  --easy-table-footer-font-size: 14px;
+  --easy-table-footer-padding: 0px 10px;
+  --easy-table-footer-height: 50px;
+  --easy-table-message-font-color: #a78bfa;
+}
+
+/* Override problematic selectors */
+.easy-table-body-row {
+  color: var(--easy-table-body-row-font-color) !important;
+}
