@@ -38,7 +38,7 @@
             </div>
             <div class="submit-text">
               <h3 class="submit-title">Sudah Selesai Mengerjakan?</h3>
-              <p class="submit-sub">Upload foto jawaban worksheetmu dan kumpulkan sekarang.</p>
+              <p class="submit-sub">Upload Poster dan kumpulkan sekarang.</p>
             </div>
             <button class="submit-btn" @click="openSubmission(null)">
               <svg

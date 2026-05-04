@@ -13,7 +13,8 @@
     </Teleport>
 
     <!-- Back -->
-    <button class="back-btn" @click="$emit('back')"><span>←</span> Kembali ke Berita</button>
+    <button class="back-btn" @click="$emit('back')"><span>←</span> Kembali</button>
+    <a class="back-btn" :href="news.source" target="_blank" rel="noopener noreferrer"> Buka berita</a>
 
     <div class="detail-layout">
       <!-- Article -->

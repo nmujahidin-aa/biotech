@@ -3,7 +3,7 @@ import HomePage from '@/presentation/pages/students/HomePage.vue'
 import NewsPage from '@/presentation/pages/students/NewsPage.vue'
 import MaterialPage from '@/presentation/pages/students/MaterialPage.vue'
 import WorksheetPage from '@/presentation/pages/students/WorksheetPage.vue'
-import AdminPage from '@/presentation/pages/admin/AdminPage.vue'
+import PosterPage from '@/presentation/pages/publish/PosterPage.vue'
 
 const routes = [
   {
@@ -30,13 +30,13 @@ const routes = [
     component: WorksheetPage,
   },
 
-  // ===== ADMIN =====
+  // ===== PUBLISH =====
   {
-    path: '/admin',
-    name: 'admin',
-    component: AdminPage,
+    path: '/poster',
+    name: 'poster',
+    component: PosterPage,
     meta: {
-      layout: 'AdminLayout',
+      layout: 'PublishLayout',
     },
   },
 ]

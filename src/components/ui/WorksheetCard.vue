@@ -1,5 +1,5 @@
 <template>
-  <div class="ws-card" @click="$emit('open')">
+  <a class="ws-card" :href="worksheet.embedUrl" target="_blank" rel="noopener noreferrer">
     <!-- Number -->
     <div class="card-number">{{ String(worksheet.id).padStart(2, '0') }}</div>
 
@@ -10,15 +10,6 @@
       <!-- Top row -->
       <div class="card-top">
         <span class="subject-tag">{{ worksheet.subject }}</span>
-        <span
-          class="difficulty-badge"
-          :style="{
-            color: diff.color,
-            background: diff.bg,
-            borderColor: diff.border,
-          }"
-          >{{ worksheet.difficulty }}</span
-        >
       </div>
 
       <!-- Title -->
@@ -77,7 +68,7 @@
 
     <!-- Hover scan line -->
     <div class="card-scan"></div>
-  </div>
+  </a>
 </template>
 
 <script setup>
@@ -221,6 +212,7 @@ const diff = computed(
   line-height: 1.3;
   margin: 0;
   padding-right: 30px;
+  text-align: start;
 }
 
 .card-desc {
